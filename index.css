@@ -1,0 +1,136 @@
+body {
+    background-color: #0b131e;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: white;
+    font-family: 'Lato', sans-serif;
+}
+
+a {
+    color: white;
+}
+
+.container {
+   display: flex;
+   width: 92%;
+   gap: 20px;
+   padding: 50px;
+    
+}
+.header-container {
+    background-color: #202c3c;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+    border: none;
+    border-radius: 1rem;
+    padding: 80px 10px 0px 10px;
+}
+
+.header-cont-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    
+}
+
+.header-cont-items-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: small;
+}
+.hero-container{
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.search-input {
+    background-color: #202c3c;
+    width: 97%;
+    border: none;
+    padding: 10px;
+    border-radius: 1rem;
+    color: white;
+    font-size: medium;
+}
+
+.hero {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    
+}
+ 
+.hero-item-one {
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0 0 50px;
+    
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+}
+.title h1 {
+    margin: 0;
+}
+.title p {
+    margin: 0;
+}
+
+.hero-image {
+    display: flex;
+    justify-content: center;
+   
+    
+}
+
+.hero-image a i {
+    font-size:120px;
+    padding: 20px;
+   
+}
+.forcast-container {
+    background-color: #202c3c;
+    border: none;
+    border-radius: 1rem;
+    padding: 10px;
+}
+
+.forcast-container p {
+    margin: 0;
+}
+.today-forcast-container {
+display: flex;
+gap: 10px;
+padding: 10px;
+
+}
+
+.air-condition-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.air-condition-container-item-one {
+    display: flex;
+    justify-content: space-between;
+}
+
+.air-condition-container-item-two {
+    display: grid;
+    grid-template-columns: 45% 45%;
+}
+.footer-container {
+    background-color: #202c3c;
+    width: 30%;
+    border: none;
+    border-radius: 1rem;
+}
+
