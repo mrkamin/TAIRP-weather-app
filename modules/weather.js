@@ -1,14 +1,113 @@
-export async function fetchWeatherData() {
-    const apiUrl = 'https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&hourly=temperature_2m,relativehumidity_2m,dewpoint_2m,apparent_temperature,precipitation_probability,precipitation,rain,showers,snowfall,snow_depth,weathercode,pressure_msl,surface_pressure,cloudcover,cloudcover_low,cloudcover_mid,cloudcover_high,visibility,evapotranspiration,et0_fao_evapotranspiration,vapor_pressure_deficit,windspeed_10m,windspeed_80m,windspeed_120m,windspeed_180m,winddirection_10m,winddirection_80m,winddirection_120m,winddirection_180m,windgusts_10m,temperature_80m,temperature_120m,temperature_180m,soil_temperature_0cm,soil_temperature_6cm,soil_temperature_18cm,soil_temperature_54cm,soil_moisture_0_1cm,soil_moisture_1_3cm,soil_moisture_3_9cm,soil_moisture_9_27cm,soil_moisture_27_81cm&daily=weathercode,temperature_2m_max,temperature_2m_min,apparent_temperature_max,apparent_temperature_min,sunrise,sunset,uv_index_max,uv_index_clear_sky_max,precipitation_sum,rain_sum,showers_sum,snowfall_sum,precipitation_hours,precipitation_probability_max,windspeed_10m_max,windgusts_10m_max,winddirection_10m_dominant,shortwave_radiation_sum,et0_fao_evapotranspiration&current_weather=true&precipitation_unit=inch&timeformat=unixtime&timezone=America%2FNew_York';
-    try {
-        const response = await fetch(apiUrl);
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error('Fetch error:', error);
-        throw error;
-    }
-}
+const API_KEY = "d38c916768759cb41db22c9f17960236";
+const BASE_URL = "https://api.openweathermap.org/data/2.5"; //https://api.openweathermap.org/data/2.5/weather?units=metric&q=kabul&appid=d38c916768759cb41db22c9f17960236
+
+const getWeatherData = (infoType, searchParams) => {
+  const url = new URL(BASE_URL + "/" + infoType);
+  url.search = new URLSearchParams({ ...searchParams, appid: API_KEY });
+
+  return fetch(url).then((res) => res.json());
+};
+
+const formatCurrentWeather = (data) => {
+  const {
+    coord: { lat, lon },
+    main: { temp, feels_like, temp_min, temp_max, humidity },
+    name,
+    dt,
+    sys: { country, sunrise, sunset },
+    weather,
+    wind: { speed },
+  } = data;
+
+  const { main: details, icon } = weather[0];
+
+  return {
+    lat,
+    lon,
+    temp,
+    feels_like,
+    temp_min,
+    temp_max,
+    humidity,
+    name,
+    dt,
+    country,
+    sunrise,
+    weather,
+    speed,
+  };
+};
+
+const formatForecastWeather = (data) => {
+  let { timezone, daily, hourly } = data;
+  daily = daily.slice(1, 6).map((d) => {
+    return {
+      title: formatToLocalTime(d.dt, timezone, "ccc"),
+      temp: d.temp.day,
+      icon: d.weather[0].icon,
+    };
+  });
+  hourly = hourly.slice(1, 6).map((d) => {
+    return {
+      title: formatToLocalTime(d.dt, timezone, "hh:mm a"),
+      temp: d.temp.day,
+      icon: d.weather[0].icon,
+    };
+  });
+  return { timezone, daily, hourly };
+};
+const getformattedWeadtherData = async (searchParams) => {
+  const formattedCurrentWeather = await getWeatherData(
+    "weather",
+    searchParams
+  ).then(formatCurrentWeather);
+
+  const { lat, lon } = formattedCurrentWeather;
+
+  const formattedForecastWeather = await getWeatherData("onecall", {
+    lat,
+    lon,
+    exclude: "current, minutely,alerts",
+    units: searchParams,
+  }).then(formatForecastWeather);
+  return {...formattedCurrentWeather, ...formattedForecastWeather};
+};
+
+const formatToLocalTime = (
+    secs,
+    zone,
+    format = "cccc, dd lll yyyy' | Local time: 'hh:mm a"
+) => DateTime.formSeconds(secs).setZone(zone).toformat(format);
+
+export default getformattedWeadtherData;
+
+// export async function fetchWeatherData(cityName) {
+//     try {
+//         const response = await fetch(BASE_URL + cityName + `&appid=${API_KEY}`);
+//         if (!response.ok) {
+//             throw new Error('Network response was not ok');
+//         }
+//         const data = await response.json();
+//         return data;
+//     } catch (error) {
+//         console.error('Fetch error:', error);
+//         throw error;
+//     }
+// }
+
+// const HOURLY_URL = 'https://api.open-meteo.com/v1/dwd-icon?hourly=temperature_2m,weathercode&timeformat=unixtime&timezone=America%2FLos_Angeles';
+
+// export async function fetchWeatherDataHourl(lat, lng) {
+//     try {
+//         const hourlyUrl = `https://api.open-meteo.com/v1/dwd-icon?hourly=temperature_2m,weathercode&timeformat=unixtime&timezone=America%2FLos_Angeles&latitude=${lat}&longitude=${lng}`;
+//         const response = await fetch(hourlyUrl);
+//         if (!response.ok) {
+//             throw new Error('Network response was not ok');
+//         }
+//         const data = await response.json();
+//         return data;
+//     } catch (error) {
+//         console.error('Fetch error:', error);
+//         throw error;
+//     }
+// }

@@ -50,6 +50,10 @@ a {
   width: 60%;
 }
 
+.search-conatiner {
+    display: flex;
+}
+
 .search-input {
     background-color: #202c3c;
     width: 97%;
@@ -84,11 +88,17 @@ a {
     margin: 0;
 }
 
+.degree {
+    display: flex;
+}
 .hero-image {
     display: flex;
     justify-content: center;
-   
-    
+}
+
+.hero-image img {
+    width: 140px;
+    height: auto;
 }
 
 .hero-image a i {
