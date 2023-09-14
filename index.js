@@ -57,7 +57,6 @@ async function fetchData() {
       const htmlContent = `
         <div class="hourly-data">
           <p>${hourlyData.hour}:00</p>
-          <p>${hourlyData.date}</p>
           <img src="${hourlyData.iconUrl}" alt="Weather Icon">
           <p>${hourlyData.temperature}°C</p>
         </div>

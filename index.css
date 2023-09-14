@@ -48,6 +48,7 @@ a {
   display: flex;
   flex-direction: column;
   width: 60%;
+  gap: 10px;
 }
 
 .search-conatiner {
@@ -67,7 +68,6 @@ a {
 .hero {
     display: grid;
     grid-template-columns: 60% 40%;
-    
 }
  
 .hero-item-one {
@@ -112,34 +112,26 @@ a {
     border-radius: 1rem;
     padding: 10px;
     position: relative;
+    overflow: hidden;
 }
 
 .forcast-container p {
     margin: 0;
 }
 
-.swiper-container .slider-wrap {
-    position: relative !important;
-}
-.swiper-wrapper {
-    display: inline-block;
-    position: absolute !important;
-    display: flex !important;
-    gap: 10px !important;
-    background-color: blue;
-    width: 100% !important;
-    overflow: hidden !important;
-}
-
-.swiper-slide{
-    background-color:aqua;
-    position: sticky !important;
-    overflow: hidden !important;
-}
-
 .hourly-data {
-    overflow: hidden !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 1px solid rgba(255, 255, 255, 0.164);
+    margin: 10px;
 }
+.hourly-data p {
+    margin: 0;
+    padding: 0;
+}
+
+
 .today-forcast-container {
 display: flex;
 gap: 10px;
