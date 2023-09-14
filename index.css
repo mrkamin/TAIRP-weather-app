@@ -111,10 +111,34 @@ a {
     border: none;
     border-radius: 1rem;
     padding: 10px;
+    position: relative;
 }
 
 .forcast-container p {
     margin: 0;
+}
+
+.swiper-container .slider-wrap {
+    position: relative !important;
+}
+.swiper-wrapper {
+    display: inline-block;
+    position: absolute !important;
+    display: flex !important;
+    gap: 10px !important;
+    background-color: blue;
+    width: 100% !important;
+    overflow: hidden !important;
+}
+
+.swiper-slide{
+    background-color:aqua;
+    position: sticky !important;
+    overflow: hidden !important;
+}
+
+.hourly-data {
+    overflow: hidden !important;
 }
 .today-forcast-container {
 display: flex;
@@ -142,5 +166,6 @@ padding: 10px;
     width: 30%;
     border: none;
     border-radius: 1rem;
+    
 }
 

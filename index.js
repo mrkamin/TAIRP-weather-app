@@ -1,80 +1,75 @@
-import getformattedWeadtherData from "./modules/weather.js";
+const API_KEY = "4f22cdc9d623822b65f661daedf0a20c";
+const BASE_URL =
+  "https://api.openweathermap.org/data/2.5/forecast?q=kabul&appid=";
 
-const fetchWeather = async () => {
-    const data = await getformattedWeadtherData( {q: "kabul"});
-    console.log(data)
+async function fetchData() {
+  try {
+    const response = await fetch(BASE_URL + API_KEY + "&units=mitric");
+
+    // Check if the response status is OK (status code 200)
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    // Use the data in your module
+    console.log(data);
+    document.getElementById("hero-city").textContent = data.city.name;
+    document.getElementById("hero-description").textContent =
+      data.list[0].weather[0].description;
+    const iconCode = data.list[0].weather[0].icon;
+    const iconUrl = `https://openweathermap.org/img/wn/${iconCode}@2x.png`;
+    let heroImage = document.getElementById("hero-image");
+
+    heroImage.innerHTML = `<img id="hero-icon" src="${iconUrl}" alt="Weather Icon">`;
+
+    const temperatureKelvin = data.list[0].main.temp;
+    const temperatureCelsius = temperatureKelvin - 273.15;
+    document.getElementById(
+      "hero-degree"
+    ).innerHTML = `${temperatureCelsius.toFixed(0)}&deg;C`;
+
+    // Create an array to store hourly weather data
+    const hourlyForecast = data.list.map((hourlyData) => ({
+      hour: new Date(hourlyData.dt * 1000).getHours(),
+      date: new Date(hourlyData.dt * 1000).toLocaleDateString(),
+      temperature: (hourlyData.main.temp - 273.15).toFixed(0),
+      iconUrl: `https://openweathermap.org/img/wn/${hourlyData.weather[0].icon}@2x.png`,
+    }));
+
+    // Initialize Swiper.js slider
+    const swiper = new Swiper(".swiper-container", {
+      slidesPerView: "5",
+      spaceBetween: 0,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+
+    // Populate the slider with hourly weather data
+    const hourlyForecastContainer = document.querySelector(".swiper-wrapper");
+    hourlyForecast.forEach((hourlyData) => {
+      const hourlySlide = document.createElement("div");
+      hourlySlide.classList.add("swiper-slide");
+
+      const htmlContent = `
+        <div class="hourly-data">
+          <p>${hourlyData.hour}:00</p>
+          <p>${hourlyData.date}</p>
+          <img src="${hourlyData.iconUrl}" alt="Weather Icon">
+          <p>${hourlyData.temperature}°C</p>
+        </div>
+      `;
+      hourlySlide.innerHTML = htmlContent;
+      hourlyForecastContainer.appendChild(hourlySlide);
+    });
+  } catch (error) {
+    // Handle any errors that occurred during the fetch
+    console.error("Fetch error:", error);
+  }
 }
-fetchWeather()
 
-// import { fetchWeatherData } from "./modules/weather.js";
-// // import { fetchWeatherDataHourl } from "./modules/weather.js";
-// import { geocode } from "./modules/geocoding.js";
-
-// const searchBox = document.getElementById("search-input");
-// const searchBtn = document.getElementById("search-btn");
-// const weatherIcon = document.getElementById("hero-icon");
-
-
-// let cityName; 
-// searchBtn.addEventListener("click", () => {
-//     cityName = searchBox.value;
-//     fetchData()
-//     getCoordinatesForLocation(cityName)
-//     // fetchDatahourly()
-    
-// })
-// async function fetchData() {
-//     try {
-//         const weatherData = await fetchWeatherData(cityName);
-//         console.log(weatherData);
-//         document.getElementById("hero-city").textContent = weatherData.name;
-//         document.getElementById("hero-description").textContent = weatherData.weather[0].description;
-//         document.getElementById("hero-degree").innerHTML = Math.round(weatherData.main.temp) + `C&deg;`;
-//          // Construct the weather icon URL dynamically
-//          const iconUrl = `https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png`;
-
-//          // Update the weatherIcon src attribute
-//          weatherIcon.src = iconUrl;
-
-        
-//     } catch (error) {
-
-//     }
-// } ;
-// async function fetchWeatherDataHourl(lat, lng) {
-//     try {
-//         const hourlyUrl = `https://api.open-meteo.com/v1/dwd-icon?hourly=temperature_2m,weathercode&timeformat=unixtime&timezone=America%2FLos_Angeles&latitude=${lat}&longitude=${lng}`;
-//         const response = await fetch(hourlyUrl);
-//         if (!response.ok) {
-//             throw new Error('Network response was not ok');
-//         }
-//         const data = await response.json();
-//         return data;
-//     } catch (error) {
-//         console.error('Fetch error:', error);
-//         throw error;
-//     }
-// }
-// async function fetchDatahourly() {
-   
-//     try {
-//         const weatherData = await fetchWeatherDataHourl(lat, lng);
-//         console.log(weatherData);
-//         console.log("working")
-
-        
-//     } catch (error) {
-
-//     }
-// }  ;
-
-// async function getCoordinatesForLocation(locationName) {
-//     try {
-//         const coordinates = await geocode(locationName);
-//         console.log(`Coordinates for ${locationName}: Lat: ${coordinates.lat}, Lng: ${coordinates.lng}`);
-//         fetchDatahourly(coordinates.lat, coordinates.lng);
-//     } catch (error) {
-//         console.error('Geocoding error:', error);
-//     }
-// }
-
+// Call the fetchData function when the module is imported
+fetchData();

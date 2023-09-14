@@ -8,6 +8,10 @@
       href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
     <title>Weather App</title>
   </head>
   <body>
@@ -35,8 +39,15 @@
       </header>
       <div class="hero-container">
         <div class="search-conatiner">
-          <input type="text" class="search-input" value="search for city" id="search-input"/>
-          <button id="search-btn" class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+          <input
+            type="text"
+            class="search-input"
+            value="search for city"
+            id="search-input"
+          />
+          <button id="search-btn" class="search-btn">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
         </div>
         <div class="hero">
           <div class="hero-item-one">
@@ -48,105 +59,55 @@
               <h1 id="hero-degree">31C</h1>
             </div>
           </div>
-          <div class="hero-image">
-            <img id="hero-icon" src="" alt="Weather Icon">
+          <div class="hero-image" id="hero-image">
+            <img id="hero-icon" src="" alt="Weather Icon" />
           </div>
         </div>
         <div class="forcast-container">
-            <p>TODAY'S FORECAST</p>
-            <div class="today-forcast-container">
-          <div class="hour">
-            <p>6:00 AM</p>
-            <a href=""><i class="fa-solid fa-cloud-sun-rain"></i></a>
-            <h5>31C&deg;</h5>
-          </div>
-          <div class="hour">
-            <p>6:00 AM</p>
-            <a href=""><i class="fa-solid fa-cloud-sun-rain"></i></a>
-            <h5>31C&deg;</h5>
-          </div>
-          <div class="hour">
-            <p>6:00 AM</p>
-            <a href=""><i class="fa-solid fa-cloud-sun-rain"></i></a>
-            <h5>31C&deg;</h5>
-          </div>
-          <div class="hour">
-            <p>6:00 AM</p>
-            <a href=""><i class="fa-solid fa-cloud-sun-rain"></i></a>
-            <h5>31C&deg;</h5>
-          </div>
-          <div class="hour">
-            <p>6:00 AM</p>
-            <a href=""><i class="fa-solid fa-cloud-sun-rain"></i></a>
-            <h5>31C&deg;</h5>
-          </div>
-          <div class="hour">
-            <p>6:00 AM</p>
-            <a href=""><i class="fa-solid fa-cloud-sun-rain"></i></a>
-            <h5>31C&deg;</h5>
-          </div>
-          <div class="hour">
-            <p>6:00 AM</p>
-            <a href=""><i class="fa-solid fa-cloud-sun-rain"></i></a>
-            <h5>31C&deg;</h5>
-          </div>
-          <div class="hour">
-            <p>6:00 AM</p>
-            <a href=""><i class="fa-solid fa-cloud-sun-rain"></i></a>
-            <h5>31C&deg;</h5>
-          </div>
-          <div class="hour">
-            <p>6:00 AM</p>
-            <a href=""><i class="fa-solid fa-cloud-sun-rain"></i></a>
-            <h5>31C&deg;</h5>
-          </div>
-          <div class="hour">
-            <p>6:00 AM</p>
-            <a href=""><i class="fa-solid fa-cloud-sun-rain"></i></a>
-            <h5>31C&deg;</h5>
-          </div>
-          <div class="hour">
-            <p>6:00 AM</p>
-            <a href=""><i class="fa-solid fa-cloud-sun-rain"></i></a>
-            <h5>31C&deg;</h5>
-          </div>
-          <div class="hour">
-            <p>6:00 AM</p>
-            <a href=""><i class="fa-solid fa-cloud-sun-rain"></i></a>
-            <h5>31C&deg;</h5>
-          </div>
-          <div class="hour">
-            <p>6:00 AM</p>
-            <a href=""><i class="fa-solid fa-cloud-sun-rain"></i></a>
-            <h5>31C&deg;</h5>
-          </div>
-        </div>
+          <p>TODAY'S FORECAST</p>
+          
         </div>
         <div class="air-condition-container">
           <div class="air-condition-container-item-one">
             <p>AIR CONDITIONS</p>
             <button>See more</button>
-          </div >
+          </div>
           <div class="air-condition-container-item-two">
             <div class="air-cond-item-two-item-one">
-                <div class="air-cond-item-two-item-one-one">
-                    <p><span><i class="fa-solid fa-temperature-three-quarters"></i></span>Real Feel</p>
-                    <h4>31C&deg;</h4>
-                </div>
-                <div class="air-cond-item-two-item-one-one">
-                    <p><span><i class="fa-solid fa-droplet"></i></span>Chance of Rain</p>
-                    <h4>31%</h4>
-                </div>
+              <div class="air-cond-item-two-item-one-one">
+                <p>
+                  <span
+                    ><i
+                      class="fa-solid fa-temperature-three-quarters"
+                    ></i></span
+                  >Real Feel
+                </p>
+                <h4>31C&deg;</h4>
+              </div>
+              <div class="air-cond-item-two-item-one-one">
+                <p>
+                  <span><i class="fa-solid fa-droplet"></i></span>Chance of Rain
+                </p>
+                <h4>31%</h4>
+              </div>
             </div>
             <div class="air-cond-item-two-item-two">
-                <div class="air-cond-item-two-item-two-one">
-                    <p><span><i class="fa-solid fa-temperature-three-quarters"></i></span>Real Feel</p>
-                    <h4>31C&deg;</h4>
-                </div>
-                <div class="air-cond-item-two-item-two-one">
-                    <p><span><i class="fa-solid fa-droplet"></i></span>Chance of Rain</p>
-                    <h4>31%</h4>
-                </div>
+              <div class="air-cond-item-two-item-two-one">
+                <p>
+                  <span
+                    ><i
+                      class="fa-solid fa-temperature-three-quarters"
+                    ></i></span
+                  >Real Feel
+                </p>
+                <h4>31C&deg;</h4>
+              </div>
+              <div class="air-cond-item-two-item-two-one">
+                <p>
+                  <span><i class="fa-solid fa-droplet"></i></span>Chance of Rain
+                </p>
+                <h4>31%</h4>
+              </div>
             </div>
           </div>
         </div>
@@ -158,6 +119,7 @@
       </div>
     </div>
 
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script type="module" src="index.js"></script>
     <script
       src="https://kit.fontawesome.com/d78ba80f38.js"
