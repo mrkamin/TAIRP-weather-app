@@ -1,10 +1,12 @@
 const API_KEY = "4f22cdc9d623822b65f661daedf0a20c";
 const BASE_URL =
-  "https://api.openweathermap.org/data/2.5/forecast?q=kabul&appid=";
+  "https://api.openweathermap.org/data/2.5/forecast?q=";
 
-async function fetchData() {
+  const DEFAULT_LOCATION = 'kabul'; // Default location if geolocation is not available
+
+async function fetchData(location) {
   try {
-    const response = await fetch(BASE_URL + API_KEY + "&units=mitric");
+    const response = await fetch(BASE_URL + location + `&appid=${API_KEY}`);
 
     // Check if the response status is OK (status code 200)
     if (!response.ok) {
@@ -30,6 +32,9 @@ async function fetchData() {
       "hero-degree"
     ).innerHTML = `${temperatureCelsius.toFixed(0)}&deg;C`;
 
+    const hourlyForecastContainer = document.querySelector(".swiper-wrapper");
+    hourlyForecastContainer.innerHTML = '';
+
     // Create an array to store hourly weather data
     const hourlyForecast = data.list.map((hourlyData) => ({
       hour: new Date(hourlyData.dt * 1000).getHours(),
@@ -49,7 +54,7 @@ async function fetchData() {
     });
 
     // Populate the slider with hourly weather data
-    const hourlyForecastContainer = document.querySelector(".swiper-wrapper");
+    
     hourlyForecast.forEach((hourlyData) => {
       const hourlySlide = document.createElement("div");
       hourlySlide.classList.add("swiper-slide");
@@ -69,6 +74,11 @@ async function fetchData() {
     console.error("Fetch error:", error);
   }
 }
+// Add event listener to the search button
+document.getElementById('search-btn').addEventListener('click', () => {
+  const location = document.getElementById('search-input').value;
+  fetchData(location);
 
-// Call the fetchData function when the module is imported
-fetchData();
+});
+
+window.onload(fetchData("kabul"))
