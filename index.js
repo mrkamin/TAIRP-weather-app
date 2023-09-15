@@ -38,7 +38,7 @@ async function fetchData(location) {
         
           const htmlContent = `
           
-            <div class="day">${dayOfWeek}</div>
+            <div class="day color-secondary">${dayOfWeek}</div>
             <div class="icon-desc">
               <div class="icon"><img src="https://www.weatherbit.io/static/img/icons/${iconCode}.png" alt=" Icon"></div>
               <div class="description">${description}</div>
@@ -105,9 +105,9 @@ async function fetchData(location) {
 
       const htmlContent = `
         <div class="hourly-data">
-          <p>${hourlyData.hour}:00</p>
+          <p class="color-secondary">${hourlyData.hour}:00</p>
           <img src="${hourlyData.iconUrl}" alt="Weather Icon">
-          <p>${hourlyData.temperature}°C</p>
+          <p class="font-size">${hourlyData.temperature}°C</p>
         </div>
       `;
       hourlySlide.innerHTML = htmlContent;

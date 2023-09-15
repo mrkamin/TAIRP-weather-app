@@ -60,11 +60,19 @@ a {
     width: 97%;
     border: none;
     padding: 10px;
-    border-radius: 1rem;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
     color: white;
     font-size: medium;
 }
 
+.search-btn {
+    color: white;
+    background-color: #202c3c;
+    border: none;
+    border-top-right-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
 .hero {
     display: grid;
     grid-template-columns: 60% 40%;
@@ -95,16 +103,27 @@ a {
     display: flex;
     justify-content: center;
 }
-
-.hero-image img {
-    width: 140px;
-    height: auto;
+.color-primary {
+    background-color: #0194fe;
+    color: white;
+}
+.color-secondary {
+ color: #818d9b;
 }
 
-.hero-image a i {
-    font-size:120px;
-    padding: 20px;
-   
+.color-third {
+    color: #bfc9d7;
+}
+.font-size {
+    font-size: larger;
+    font-weight: 600;
+}
+.see-more-btn {
+    border: none;
+    border-radius: 1rem;
+    padding: 0;
+    width: 100px;
+    height: 20px;
 }
 .forcast-container {
     background-color: #202c3c;
@@ -142,6 +161,50 @@ padding: 10px;
 .air-condition-container {
     display: flex;
     flex-direction: column;
+    background-color: #202c3c;
+    padding: 10px;
+    border: none;
+    border-radius: 1rem;
+    gap: 10px;
+}
+
+.space{
+    display: flex;
+    gap: 10px;
+}
+
+.air-cond-item-two-item-one {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.air-cond-item-two-item-one-one {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.air-cond-item-two-item-one-one p {
+    margin: 0;
+}
+
+.air-cond-item-two-item-two {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.air-cond-item-two-item-two-one {
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.air-condition-container p {
+    margin: 0;
 }
 
 .air-condition-container-item-one {
@@ -155,36 +218,34 @@ padding: 10px;
 }
 .new-footer-container {
     background-color: #202c3c;
-    width: 30%;
+    width: 100%;
     border: none;
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
     position: relative;
     overflow: hidden;
+    padding: 20px;
+    margin-top: 50px;
    
 }
-.new-new-footer-contaienr {
-    background-color: aqua;
-    
-    width: 100%;
-    
-    
-}
+
 .footer-container {
     position: absolute;
-    width: 100%;
+    width: 80%;
 }
 
 .daily-forecast-container {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
+    display: grid;
+    grid-template-columns: 15% 65% 20%;
+    padding: 16.5px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.137);
 }
 
 .icon-desc {
-    display: flex;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: 20% 80%;
+    width: 100%;
 }
 
 .icon img {
