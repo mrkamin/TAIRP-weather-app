@@ -153,11 +153,44 @@ padding: 10px;
     display: grid;
     grid-template-columns: 45% 45%;
 }
-.footer-container {
+.new-footer-container {
     background-color: #202c3c;
     width: 30%;
     border: none;
     border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+   
+}
+.new-new-footer-contaienr {
+    background-color: aqua;
     
+    width: 100%;
+    
+    
+}
+.footer-container {
+    position: absolute;
+    width: 100%;
+}
+
+.daily-forecast-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.icon-desc {
+    display: flex;
+    gap: 10px;
+}
+
+.icon img {
+    margin: 0;
+    padding: 0;
+    width: 30px;
+    height: 30px;
 }
 

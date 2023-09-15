@@ -2,11 +2,55 @@ const API_KEY = "4f22cdc9d623822b65f661daedf0a20c";
 const BASE_URL =
   "https://api.openweathermap.org/data/2.5/forecast?q=";
 
+  const DAILY_API_KEY = "ab9be3c2fcb74a4fa4504cba91b24fe9";
+  const DAILY_BASE_URL = "https://api.weatherbit.io/v2.0/forecast/daily?city=";
+
   const DEFAULT_LOCATION = 'kabul'; // Default location if geolocation is not available
+
 
 async function fetchData(location) {
   try {
     const response = await fetch(BASE_URL + location + `&appid=${API_KEY}`);
+    const res = await fetch(DAILY_BASE_URL + location + `&key=${DAILY_API_KEY}`);
+    
+      if (!res.ok) {
+        throw new Error(`HTTP error! Status: ${res.status}`);
+      } 
+      const dalyData = await res.json();
+        console.log(dalyData);
+
+        const footerContainer = document.querySelector(".footer-container");
+    footerContainer.innerHTML = '';
+        const dailyForecastData = dalyData.data; // Assuming the daily forecast data is stored in the 'data' property
+
+        // Loop through the daily forecast data and create HTML elements for each day
+        dailyForecastData.forEach((dayData) => {
+          const dayContainer = document.createElement("div");
+          dayContainer.classList.add("daily-forecast-container");
+        
+          const dayOfWeek = new Date(dayData.datetime).toLocaleDateString("en-US", {
+            weekday: "short",
+          });
+          const iconCode = dayData.weather.icon;
+          const description = dayData.weather.description;
+          const maxTemp = dayData.max_temp;
+          const minTemp = dayData.min_temp;
+        
+          const htmlContent = `
+          
+            <div class="day">${dayOfWeek}</div>
+            <div class="icon-desc">
+              <div class="icon"><img src="https://www.weatherbit.io/static/img/icons/${iconCode}.png" alt=" Icon"></div>
+              <div class="description">${description}</div>
+            </div>
+            <div class="temp">${maxTemp.toFixed(0)} / ${minTemp.toFixed(0)}</div>
+          `;
+        
+          dayContainer.innerHTML = htmlContent;
+          footerContainer.appendChild(dayContainer);
+        });
+        // Loop through the daily forecast data and create HTML elements for each day
+      
 
     // Check if the response status is OK (status code 200)
     if (!response.ok) {
@@ -69,6 +113,19 @@ async function fetchData(location) {
       hourlySlide.innerHTML = htmlContent;
       hourlyForecastContainer.appendChild(hourlySlide);
     });
+
+    const felsLikeKelvin = data.list[0].main.feels_like;
+    const felsLikeCelsius = felsLikeKelvin - 273.15;
+    document.getElementById("real-feel").innerHTML = `${felsLikeCelsius.toFixed(0)}&deg;`;
+
+    document.getElementById("humidity").innerHTML = `${data.list[0].main.humidity}%`
+    const windSpeedMetersPerSecond = data.list[0].wind.speed;
+    const windSpeedKmPerHour = windSpeedMetersPerSecond * 3.6;
+    document.getElementById("wind-speed").innerHTML = `${windSpeedKmPerHour.toFixed(0)}km/h`
+
+    const visibility = data.list[0].visibility;
+    const visibilityKm = visibility / 1000;
+    document.getElementById("visibility").innerHTML = `${visibilityKm.toFixed(0)}Km/h`
   } catch (error) {
     // Handle any errors that occurred during the fetch
     console.error("Fetch error:", error);
@@ -81,4 +138,4 @@ document.getElementById('search-btn').addEventListener('click', () => {
 
 });
 
-window.onload(fetchData("kabul"))
+window.onload(fetchData(DEFAULT_LOCATION))
