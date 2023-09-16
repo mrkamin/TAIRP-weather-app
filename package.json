@@ -2,5 +2,34 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "axios": "^1.5.0"
-  }
+  },
+  "name": "weather-app",
+  "description": "Create a weather application that retrieves and displays weather information for a specific location using a weather API. Users can enter a city name, and the app will fetch and display the current weather conditions. Use HTML for the user interface, CSS for styling, and JavaScript to fetch data from the API and dynamically update the weather.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.28.1",
+    "hint": "^7.1.10",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^21.0.0",
+    "stylelint-csstree-validator": "^1.9.0",
+    "stylelint-scss": "^3.21.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrkamin/TAIRP-weather-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrkamin/TAIRP-weather-app/issues"
+  },
+  "homepage": "https://github.com/mrkamin/TAIRP-weather-app#readme"
 }

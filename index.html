@@ -12,6 +12,7 @@
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
     />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <title>Weather App</title>
   </head>
   <body>
@@ -24,15 +25,21 @@
             <p>Weather</p>
           </div>
           <div class="header-cont-items-item">
-            <a href="#" class="color-secondary"><i class="fa-solid fa-bars"></i></a>
+            <a href="#" class="color-secondary"
+              ><i class="fa-solid fa-bars"></i
+            ></a>
             <p class="color-secondary">Cities</p>
           </div>
           <div class="header-cont-items-item">
-            <a href="#" class="color-secondary"><i class="fa-solid fa-map"></i></a>
+            <a href="#" class="color-secondary"
+              ><i class="fa-solid fa-map"></i
+            ></a>
             <p class="color-secondary">Map</p>
           </div>
           <div class="header-cont-items-item">
-            <a href="#" class="color-secondary"><i class="fa-solid fa-gear"></i></a>
+            <a href="#" class="color-secondary"
+              ><i class="fa-solid fa-gear"></i
+            ></a>
             <p class="color-secondary">Settings</p>
           </div>
         </div>
@@ -40,11 +47,10 @@
       <div class="hero-container">
         <div class="search-conatiner">
           <input
-            type="text"
-            class="search-input"
+            type="search"
+            class="search-input color-secondary"
             value="search for city"
             id="search-input"
-            class="color-secondary"
           />
           <button id="search-btn" class="search-btn">
             <i class="fa-solid fa-magnifying-glass"></i>
@@ -54,7 +60,9 @@
           <div class="hero-item-one">
             <div class="title">
               <h1 id="hero-city"></h1>
-              <p id="hero-description" class="color-secondary">chance of rain 10%</p>
+              <p id="hero-description" class="color-secondary">
+                chance of rain 10%
+              </p>
             </div>
             <div class="degree">
               <h1 id="hero-degree">31C</h1>
@@ -72,7 +80,7 @@
         </div>
         <div class="air-condition-container">
           <div class="air-condition-container-item-one">
-            <p class="color-third ">AIR CONDITIONS</p>
+            <p class="color-third">AIR CONDITIONS</p>
             <button class="see-more-btn color-primary">See more</button>
           </div>
           <div class="air-condition-container-item-two">
@@ -97,11 +105,7 @@
             <div class="air-cond-item-two-item-two">
               <div class="air-cond-item-two-item-two-one">
                 <p class="color-third space">
-                  <span
-                    ><i
-                      class="fa-solid fa-temperature-three-quarters"
-                    ></i></span
-                  >Wind Speed
+                  <span> <i class="fa-solid fa-wind"></i></span>Wind Speed
                 </p>
                 <p id="wind-speed" class="font-size">31C&deg;</p>
               </div>
@@ -116,16 +120,13 @@
         </div>
       </div>
       <div class="new-footer-container">
-        <div >
+        <div>
           <p class="color-secondary">7-DAY-FORCOAST</p>
         </div>
         <div class="new-new-footer-contaienr">
-        <div class="footer-container">
-        
+          <div class="footer-container"></div>
         </div>
       </div>
-      </div>
-      
     </div>
 
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
