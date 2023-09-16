@@ -24,7 +24,9 @@
 ### Key Features <a name="key-features"></a>
 
 - **Make a user freindly interface with HTML**
-- **fetch data from the API and dynamically update the weather information.**
+- **fetch data from the API and dynamically update the weather information**
+- **Add the featuer of detecting automatical user location**
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
