@@ -83,7 +83,7 @@ async function fetchData(location) {
       iconUrl: `https://openweathermap.org/img/wn/${hourlyData.weather[0].icon}@2x.png`,
     }));
 
-    // eslint-disable-next-line no-unused-vars
+    // eslint-disable-next-line
     const swiper = new Swiper('.swiper-container', {
       slidesPerView: '5',
       spaceBetween: 0,
