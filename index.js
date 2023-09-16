@@ -125,7 +125,7 @@ async function fetchData(location) {
     const visibilityKm = visibility / 1000;
     document.getElementById('visibility').innerHTML = `${visibilityKm.toFixed(
       0,
-    )}Km/h`;
+    )}Km`;
   } catch (error) {
     // Handle any errors that occurred during the fetch
     console.error('Fetch error:', error);
