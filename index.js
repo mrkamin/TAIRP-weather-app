@@ -85,8 +85,20 @@ async function fetchData(location) {
 
     // eslint-disable-next-line
     const swiper = new Swiper('.swiper-container', {
-      slidesPerView: '5',
+      slidesPerView: '3',
       spaceBetween: 0,
+      breakpoints: {
+        // Customize when Swiper should change number of slides
+        768: {
+          slidesPerView: 4, // For screens with width >= 768px, show 3 slides
+        },
+        992: {
+          slidesPerView: 5, // For screens with width >= 992px, show 4 slides
+        },
+        1200: {
+          slidesPerView: 6, // For screens with width >= 1200px, show 5 slides
+        },
+      },
     });
 
     // Populate the slider with hourly weather data

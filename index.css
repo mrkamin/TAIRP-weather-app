@@ -239,7 +239,7 @@ a {
 
 .footer-container {
   position: absolute;
-  width: 80%;
+  width: 98%;
 }
 
 .daily-forecast-container {
@@ -260,4 +260,65 @@ a {
   padding: 0;
   width: 30px;
   height: 30px;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    display: flex;
+    flex-direction: column;
+    width: 95%;
+    gap: 20px;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .header-container {
+    display: none !important;
+  }
+
+  .hero-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .new-footer-container {
+    background-color: #202c3c;
+    width: 96%;
+    border: none;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    padding: 10px;
+    margin-top: 0;
+    height: 80vh;
+  }
+
+  .footer-container {
+    position: absolute;
+    width: 96%;
+  }
+
+  .daily-forecast-container {
+    display: grid;
+    grid-template-columns: 15% 65% 20%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.137);
+  }
+
+  .icon-desc {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    width: 100%;
+  }
+
+  .icon img {
+    margin: 0;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+  }
 }
