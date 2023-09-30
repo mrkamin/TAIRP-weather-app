@@ -3,11 +3,22 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="index.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
-      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inclusive+Sans&family=Lato:ital,wght@0,300;1,100;1,300;1,47wQbNPTDJp9hMYdvogK2hAUiHsGeiybwaWe36bwtRQ3UTpYV7YuZ8FV5j9nauFCWwcjM6dTzpL5s2N79Rp5unwdMvc8ZKUstylesheet"
     />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="index.css" />
+    <script
+      src="https://kit.fontawesome.com/d78ba80f38.js"
+      crossorigin="anonymous"
+    ></script>
     <link
       rel="stylesheet"
       href="https://unpkg.com/swiper/swiper-bundle.min.css"
@@ -16,125 +27,130 @@
     <title>Weather App</title>
   </head>
   <body>
-    <div class="container">
-      <header class="header-container">
-        <a href="#"><i class="fa-solid fa-umbrella"></i></a>
-        <div class="header-cont-items">
-          <div class="header-cont-items-item">
-            <a href="#"><i class="fa-solid fa-cloud-showers-heavy"></i></a>
-            <p>Weather</p>
-          </div>
-          <div class="header-cont-items-item">
-            <a href="#" class="color-secondary"
-              ><i class="fa-solid fa-bars"></i
-            ></a>
-            <p class="color-secondary">Cities</p>
-          </div>
-          <div class="header-cont-items-item">
-            <a href="#" class="color-secondary"
-              ><i class="fa-solid fa-map"></i
-            ></a>
-            <p class="color-secondary">Map</p>
-          </div>
-          <div class="header-cont-items-item">
-            <a href="#" class="color-secondary"
-              ><i class="fa-solid fa-gear"></i
-            ></a>
-            <p class="color-secondary">Settings</p>
-          </div>
-        </div>
-      </header>
-      <div class="hero-container">
-        <div class="search-conatiner">
-          <input
-            type="text"
-            name="location"
-            class="search-input color-secondary"
-            placeholder="search for city"
-            id="search-input"
-          />
-          <button id="search-btn" class="search-btn">
-            <i class="fa-solid fa-magnifying-glass"></i>
-          </button>
-        </div>
-        <div class="hero">
-          <div class="hero-item-one">
-            <div class="title">
-              <h1 id="hero-city"></h1>
-              <p id="hero-description" class="color-secondary">
-                chance of rain 10%
-              </p>
+    <div class="container mt-3 d-flex flex-column align-items-center">
+      <h2>My Weather Application</h2>
+      <p id="errorContainer" class="errorContainer"></p>
+      <section class="container grid mt-2">
+        <header
+          class="header-container d-flex flex-column align-items-center gap-5"
+        >
+          <a href="#" class="logo"><i class="fa-solid fa-umbrella"></i></a>
+          <div class="header-cont-items d-flex flex-column gap-3">
+            <div class="header-cont-items-item">
+              <a href="#"><i class="fa-solid fa-cloud-showers-heavy"></i></a>
+              <p>Weather</p>
             </div>
-            <div class="degree">
-              <h1 id="hero-degree">31C</h1>
+            <div class="header-cont-items-item">
+              <a href="#"><i class="fa-solid fa-bars"></i></a>
+              <p>Cities</p>
+            </div>
+            <div class="header-cont-items-item">
+              <a href="#"><i class="fa-solid fa-map"></i></a>
+              <p>Map</p>
+            </div>
+            <div class="header-cont-items-item">
+              <a href="#"><i class="fa-solid fa-gear"></i></a>
+              <p>Settings</p>
             </div>
           </div>
-          <div class="hero-image" id="hero-image">
-            <img id="hero-icon" src="" alt="Weather Icon" />
+        </header>
+        <div class="container d-flex flex-column align-items-center gap-1">
+          <div class="input-container container d-flex align-items-center">
+            <input
+              class="container p-2 search-input"
+              type="text"
+              id="locationInput"
+              placeholder="Enter location (e.g., city name)"
+            />
           </div>
-        </div>
-        <div class="forcast-container">
-          <p class="color-secondary">TODAY'S FORECAST</p>
-          <div class="swiper-container">
-            <div class="swiper-wrapper"></div>
-          </div>
-        </div>
-        <div class="air-condition-container">
-          <div class="air-condition-container-item-one">
-            <p class="color-third">AIR CONDITIONS</p>
-            <button class="see-more-btn color-primary">See more</button>
-          </div>
-          <div class="air-condition-container-item-two">
-            <div class="air-cond-item-two-item-one">
-              <div class="air-cond-item-two-item-one-one">
-                <p class="color-third space">
-                  <span
-                    ><i
-                      class="fa-solid fa-temperature-three-quarters"
-                    ></i></span
-                  >Real Feel
-                </p>
-                <p id="real-feel" class="font-size">31C&deg;</p>
+          <div class="container hero align-items-center">
+            <div class="hero-item-one">
+              <div class="title d-flex flex-column align-items-center p-2">
+                <h2 id="hero-city" class="description"></h2>
+                <p id="hero-description" class="description"></p>
               </div>
-              <div class="air-cond-item-two-item-one-one">
-                <p class="color-third space">
-                  <span><i class="fa-solid fa-droplet"></i></span>humidity
-                </p>
-                <p id="humidity" class="font-size">31%</p>
+              <div class="degree d-flex align-items-center">
+                <h1 id="hero-degree"></h1>
+                <div class="unit-toggle">
+                  <label for="unitSelect" class="p-1">T U:</label>
+                  <select id="unitSelect" class="tempratuer-unit p-1">
+                    <option value="metric">C</option>
+                    <option value="imperial">F</option>
+                  </select>
+                </div>
               </div>
             </div>
-            <div class="air-cond-item-two-item-two">
-              <div class="air-cond-item-two-item-two-one">
-                <p class="color-third space">
-                  <span> <i class="fa-solid fa-wind"></i></span>Wind Speed
-                </p>
-                <p id="wind-speed" class="font-size">31C&deg;</p>
+            <div
+              class="hero-image d-flex justify-content-center"
+              id="hero-image"
+            ></div>
+          </div>
+          <div class="forcast-container container">
+            <h6>TODAY'S FORECAST</h6>
+            <div class="swiper-container">
+              <div class="swiper-wrapper"></div>
+            </div>
+          </div>
+          <div class="air-condition-container container">
+            <div class="air-condition-container-item-one">
+              <h6 class="color-third">AIR CONDITIONS</h6>
+              <button class="see-more-btn btn btn-secondary">
+                <i class="fa-solid fa-location-dot"></i>
+              </button>
+            </div>
+            <div class="air-condition-container-item-two">
+              <div class="air-cond-item-two-item-one">
+                <div class="air-cond-item-two-item-one-one">
+                  <p class="color-third space">
+                    <a href="#"
+                      ><i class="fa-solid fa-temperature-three-quarters"></i></a
+                    >Real Feel
+                  </p>
+                  <p id="real-feel" class="font-size">31C&deg;</p>
+                </div>
+                <div class="air-cond-item-two-item-one-one">
+                  <p class="color-third space">
+                    <a href="#"><i class="fa-solid fa-droplet"></i></a>humidity
+                  </p>
+                  <p id="humidity" class="font-size">31%</p>
+                </div>
               </div>
-              <div class="air-cond-item-two-item-two-one">
-                <p class="color-third space">
-                  <span><i class="fa-solid fa-eye-slash"></i></span>Visibility
-                </p>
-                <p id="visibility" class="font-size">31%</p>
+              <div class="air-cond-item-two-item-two">
+                <div class="air-cond-item-two-item-two-one">
+                  <p class="color-third space">
+                    <a href="#"> <i class="fa-solid fa-wind"></i></a>Wind Speed
+                  </p>
+                  <p id="wind-speed" class="font-size">31C&deg;</p>
+                </div>
+                <div class="air-cond-item-two-item-two-one">
+                  <p class="color-third space">
+                    <a href="#"><i class="fa-solid fa-eye-slash"></i></a
+                    >Visibility
+                  </p>
+                  <p id="visibility" class="font-size">31%</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div class="new-footer-container">
-        <div>
-          <p class="color-secondary">7-DAY-FORCOAST</p>
+        <div class="new-footer-container">
+          <div>
+            <h6>7-DAY-FORCOAST</h6>
+          </div>
+          <div class="new-new-footer-contaienr">
+            <div class="footer-container"></div>
+          </div>
         </div>
-        <div class="new-new-footer-contaienr">
-          <div class="footer-container"></div>
-        </div>
-      </div>
+      </section>
+      <h1 class="my-location"></h1>
     </div>
 
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script type="module" src="index.js"></script>
     <script
-      src="https://kit.fontawesome.com/d78ba80f38.js"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"
     ></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="index.js" type="module"></script>
   </body>
 </html>
